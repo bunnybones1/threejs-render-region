@@ -1,0 +1,35 @@
+{
+  "name": "threejs-render-region",
+  "version": "1.0.0",
+  "description": "A convenient way to manage the threejs viewport and scissor.",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Tomasz Dysinski",
+    "email": "oz@bunnybones.com",
+    "url": "https://github.com/bunnybones1"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "loadandrunscripts": "^1.0.0",
+    "threejs-managed-view": "^3.1.0"
+  },
+  "scripts": {
+    "test": "beefy test.js --open --live"
+  },
+  "keywords": [
+    "threejs",
+    "scissor",
+    "viewport",
+    "region"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bunnybones1/threejs-render-region.git"
+  },
+  "homepage": "https://github.com/bunnybones1/threejs-render-region",
+  "bugs": {
+    "url": "https://github.com/bunnybones1/threejs-render-region/issues"
+  }
+}
