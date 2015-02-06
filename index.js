@@ -24,15 +24,15 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	}
 
 	function applyCrop(renderer) {
-		renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
-		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h);
-		renderer.enableScissorTest(true);
+		// renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
+		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, true);
+		// renderer.enableScissorTest(true);
 	}
 
 	function applyFull(renderer) {
-		renderer.setScissor(0, 0, _fullWidth, _fullHeight);
-		renderer.setViewport(0, 0, _fullWidth, _fullHeight);
-		renderer.enableScissorTest(false);
+		// renderer.setScissor(0, 0, _fullWidth, _fullHeight);
+		renderer.setViewport(0, 0, _fullWidth, _fullHeight, true);
+		// renderer.enableScissorTest(false);
 	}
 
 	function setRegion(x, y, w, h){
