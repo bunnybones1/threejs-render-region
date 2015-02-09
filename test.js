@@ -40,7 +40,9 @@ var onReady = function() {
 	})
 	view.renderManager.onExitFrame.add(function() {
 		renderRegion2.apply(view.renderer);
+		view.renderer.autoClear = false;
 		view.renderer.render(view.scene, camera2);
+		view.renderer.autoClear = true;
 	})
 	renderRegion.onChangeSignal.add(function(x, y, w, h) {
 		view.camera.aspect = w/h;
