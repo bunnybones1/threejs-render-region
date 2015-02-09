@@ -43,6 +43,8 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		_y = ~~y;
 		_w = ~~w;
 		_h = ~~h;
+		_right = _x + _w;
+		_bottom = _y + _h;
 		_wHalf = _w * .5;
 		_hHalf = _h * .5;
 		update();
