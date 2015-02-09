@@ -6,8 +6,10 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	var _fullHeight = fullHeight || 240;
 	var _x = x || 0;
 	var _y = y || 0;
-	var _w = w || fullWidth;
-	var _h = h || fullHeight;
+	var _w = w || fullWidth - _x;
+	var _h = h || fullHeight - _y;
+	var _right = _x + _w;
+	var _bottom = _y + _h;
 
 	var _halfWidth = _fullWidth * .5;
 	var _halfHeight = _fullHeight * .5;
@@ -64,6 +66,8 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		_y = ~~y;
 		_w = ~~w;
 		_h = ~~h;
+		_right = _x + _w;
+		_bottom = _y + _h;
 		_wHalf = _w * .5;
 		_hHalf = _h * .5;
 		_fullWidth = ~~fullWidth;
@@ -89,6 +93,10 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		return point;
 	}
 
+	function contains(x, y) {
+		return (x >= _x && x <= _right && y >= _y && y <= _bottom);
+	}
+
 	update();
 	this.onChangeSignal = onChangeSignal;
 	this.setRegion = setRegion;
@@ -96,6 +104,7 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	this.setFullSize = setFullSize;
 	this.setFullSizeAndRegion = setFullSizeAndRegion;
 	this.bump = update;
+	this.contains = contains;
 	this.getScreenSpacePositionOfPixel = getScreenSpacePositionOfPixel;
 
 }
