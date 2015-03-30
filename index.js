@@ -27,13 +27,13 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 
 	function applyCrop(renderer) {
 		// renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
-		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, true);
+		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, true, true);
 		// renderer.enableScissorTest(true);
 	}
 
 	function applyFull(renderer) {
 		// renderer.setScissor(0, 0, _fullWidth, _fullHeight);
-		renderer.setViewport(0, 0, _fullWidth, _fullHeight, true);
+		renderer.setViewport(0, 0, _fullWidth, _fullHeight, true, true);
 		// renderer.enableScissorTest(false);
 	}
 
