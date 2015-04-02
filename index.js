@@ -26,15 +26,15 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	}
 
 	function applyCrop(renderer) {
+		renderer.enableScissorTest(true);
 		// renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
 		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, true, true);
-		// renderer.enableScissorTest(true);
 	}
 
 	function applyFull(renderer) {
+		// renderer.enableScissorTest(false);
 		// renderer.setScissor(0, 0, _fullWidth, _fullHeight);
 		renderer.setViewport(0, 0, _fullWidth, _fullHeight, true, true);
-		// renderer.enableScissorTest(false);
 	}
 
 	function setRegion(x, y, w, h){
@@ -84,7 +84,7 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		y: 0
 	};
 
-	function getScreenSpacePositionOfPixel(x, y) {
+	function getClipSpacePositionOfPixel(x, y) {
 		if(_state && !_isFullscreen) {
 			point.x = (x - _x) / _wHalf - 1;
 			point.y = (y - _y) / _hHalf - 1;
@@ -99,6 +99,10 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		return (x >= _x && x <= _right && y >= _y && y <= _bottom);
 	}
 
+	function isVisible() {
+		return !(_w === 0 || _h === 0);
+	}
+
 	update();
 	this.onChangeSignal = onChangeSignal;
 	this.setRegion = setRegion;
@@ -107,7 +111,8 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	this.setFullSizeAndRegion = setFullSizeAndRegion;
 	this.bump = update;
 	this.contains = contains;
-	this.getScreenSpacePositionOfPixel = getScreenSpacePositionOfPixel;
+	this.isVisible = isVisible;
+	this.getClipSpacePositionOfPixel = getClipSpacePositionOfPixel;
 
 }
 
