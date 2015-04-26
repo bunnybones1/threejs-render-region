@@ -84,6 +84,17 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		y: 0
 	};
 
+	function getPositionOfPixel(x, y) {
+		if(_state && !_isFullscreen) {
+			point.x = x - _x;
+			point.y = y - _y;
+		} else {
+			point.x = x;
+			point.y = y;
+		}
+		return point;
+	}
+
 	function getClipSpacePositionOfPixel(x, y) {
 		if(_state && !_isFullscreen) {
 			point.x = (x - _x) / _wHalf - 1;
@@ -112,6 +123,7 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	this.bump = update;
 	this.contains = contains;
 	this.isVisible = isVisible;
+	this.getPositionOfPixel = getPositionOfPixel;
 	this.getClipSpacePositionOfPixel = getClipSpacePositionOfPixel;
 
 }
