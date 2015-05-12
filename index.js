@@ -25,16 +25,16 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		onChangeSignal.dispatch(_x, _y, _w, _h);
 	}
 
-	function applyCrop(renderer) {
+	function applyCrop(renderer, actuallyApply) {
 		renderer.enableScissorTest(true);
 		// renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
-		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, true, true);
+		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, !actuallyApply, true);
 	}
 
-	function applyFull(renderer) {
-		// renderer.enableScissorTest(false);
+	function applyFull(renderer, actuallyApply) {
+		renderer.enableScissorTest(false);
 		// renderer.setScissor(0, 0, _fullWidth, _fullHeight);
-		renderer.setViewport(0, 0, _fullWidth, _fullHeight, true, true);
+		renderer.setViewport(0, 0, _fullWidth, _fullHeight, !actuallyApply, true);
 	}
 
 	function setRegion(x, y, w, h){
