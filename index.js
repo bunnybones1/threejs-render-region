@@ -114,8 +114,18 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		return !(_w === 0 || _h === 0);
 	}
 
+	function listenForChange(callback) {
+		onChangeSignal.add(callback);
+		callback(_x, _y, _w, _h);
+	}
+
+	function stopListeningForChange(callback) {
+		onChangeSignal.remove(callback);
+	}
+
 	update();
-	this.onChangeSignal = onChangeSignal;
+	this.listenForChange = listenForChange;
+	this.stopListeningForChange = stopListeningForChange;
 	this.setRegion = setRegion;
 	this.setState = setState;
 	this.setFullSize = setFullSize;

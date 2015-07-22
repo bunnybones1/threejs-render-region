@@ -44,17 +44,14 @@ var onReady = function() {
 		view.renderer.render(view.scene, camera2);
 		view.renderer.autoClear = true;
 	})
-	renderRegion.onChangeSignal.add(function(x, y, w, h) {
+	renderRegion.listenForChange(function(x, y, w, h) {
 		view.camera.aspect = w/h;
 		view.camera.updateProjectionMatrix();
 	})
-	renderRegion2.onChangeSignal.add(function(x, y, w, h) {
+	renderRegion2.listenForChange(function(x, y, w, h) {
 		camera2.aspect = w/h;
 		camera2.updateProjectionMatrix();
 	})
-	renderRegion.bump();
-	renderRegion2.bump();
-
 }
 
 var loadAndRunScripts = require('loadandrunscripts');
