@@ -1,6 +1,6 @@
 {
   "name": "threejs-render-region",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "A convenient way to manage the threejs viewport and scissor.",
   "main": "index.js",
   "license": "MIT",
