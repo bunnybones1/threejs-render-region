@@ -23,9 +23,9 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 		_isFullscreen = _x === 0 && _y === 0 && _w == _fullWidth && _h == _fullHeight;
 		_this.apply = (_state && !_isFullscreen) ? applyCrop : applyFull;
 		if(optionalSpecificCallback) {
-			onChangeSignal.dispatch(_x, _y, _w, _h);
-		} else {
 			optionalSpecificCallback(_x, _y, _w, _h);
+		} else {
+			onChangeSignal.dispatch(_x, _y, _w, _h);
 		}
 	}
 
