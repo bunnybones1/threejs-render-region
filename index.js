@@ -1,5 +1,5 @@
 var Signal = require('signals').Signal;
-function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
+function RenderRegion(fullWidth, fullHeight, x, y, w, h, useScissor) {
 	var _state = true;
 	var _isFullscreen = true;
 	var _fullWidth = fullWidth || 320;
@@ -10,6 +10,7 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 	var _h = h || fullHeight - _y;
 	var _right = _x + _w;
 	var _bottom = _y + _h;
+	var _useScissor = useScissor;
 
 	var _halfWidth = _fullWidth * .5;
 	var _halfHeight = _fullHeight * .5;
@@ -31,13 +32,13 @@ function RenderRegion(fullWidth, fullHeight, x, y, w, h) {
 
 	function applyCrop(renderer, actuallyApply) {
 		renderer.enableScissorTest(true);
-		// renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
+		if(_useScissor) renderer.setScissor(_x, _fullHeight-_y-_h, _w, _h);
 		renderer.setViewport(_x, _fullHeight-_y-_h, _w, _h, !actuallyApply, true);
 	}
 
 	function applyFull(renderer, actuallyApply) {
 		renderer.enableScissorTest(false);
-		// renderer.setScissor(0, 0, _fullWidth, _fullHeight);
+		if(_useScissor) renderer.setScissor(0, 0, _fullWidth, _fullHeight);
 		renderer.setViewport(0, 0, _fullWidth, _fullHeight, !actuallyApply, true);
 	}
 
